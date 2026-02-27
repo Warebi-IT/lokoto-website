@@ -8,5 +8,8 @@ dist/
 .env.local
 .env.*.local
 
+# Netlify CLI
+.netlify
+
 # OS
 .DS_Store

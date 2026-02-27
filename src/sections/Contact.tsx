@@ -89,14 +89,19 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+      .join('&');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
     try {
-      const res = await fetch('/.netlify/functions/send-email', {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...formData }),
       });
       if (!res.ok) throw new Error('Erreur serveur');
       setStatus('success');
@@ -184,7 +189,8 @@ const Contact = () => {
             <p className="text-sm text-lokoto-gray-medium mb-6">
               On vous recontacte en priorité dès le lancement.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} name="contact" data-netlify="true" className="space-y-5">
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <Label htmlFor="name" className="text-lokoto-gray mb-2 block">
                   Nom complet

@@ -6,6 +6,14 @@
     <title>Lokoto - Gestion de Flotte</title>
   </head>
   <body>
+    <!-- Formulaire caché pour la détection Netlify Forms (SPA React) -->
+    <form name="contact" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <textarea name="message"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
