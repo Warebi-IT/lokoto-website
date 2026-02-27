@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -28,6 +29,7 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -87,10 +89,21 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Merci pour votre message ! Nous vous contacterons bientôt.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setStatus('loading');
+    try {
+      const res = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Erreur serveur');
+      setStatus('success');
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setStatus('error');
+    }
   };
 
   const scrollToSection = (id: string) => {
@@ -113,7 +126,7 @@ const Contact = () => {
           className="bg-lokoto-green rounded-[40px] p-8 lg:p-16 mb-16 text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold mb-6">
-            🚀 Lancement prévu en 2025
+            🚀 Lancement prévu en 2026
           </div>
           <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-[#111311] mb-4">
             Soyez parmi
@@ -147,6 +160,24 @@ const Contact = () => {
             id="contact-form"
             className="bg-white rounded-[28px] p-6 lg:p-8 shadow-card"
           >
+            {status === 'success' ? (
+              <div className="flex flex-col items-center justify-center text-center py-12 gap-4">
+                <div className="w-16 h-16 rounded-full bg-lokoto-green/10 flex items-center justify-center">
+                  <CheckCircle2 size={32} className="text-lokoto-green" />
+                </div>
+                <h3 className="text-xl font-bold text-lokoto-gray">Message envoyé !</h3>
+                <p className="text-sm text-lokoto-gray-medium max-w-xs">
+                  On vous recontacte sous 24h sur WhatsApp ou par email.
+                </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-2 text-sm text-lokoto-green underline underline-offset-4 hover:text-lokoto-green-dark transition-colors"
+                >
+                  Envoyer une autre demande
+                </button>
+              </div>
+            ) : (
+              <>
             <h3 className="text-2xl font-bold text-lokoto-gray mb-2">
               Rejoindre la liste d'attente
             </h3>
@@ -220,15 +251,32 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-lokoto-green text-white font-semibold px-6 py-3.5 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                disabled={status === 'loading'}
+                className="w-full bg-lokoto-green text-white font-semibold px-6 py-3.5 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               >
-                Je veux être parmi les premiers
-                <ArrowRight size={18} />
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Envoi en cours…
+                  </>
+                ) : (
+                  <>
+                    Je veux être parmi les premiers
+                    <ArrowRight size={18} />
+                  </>
+                )}
               </button>
+              {status === 'error' && (
+                <p className="text-xs text-center text-red-500">
+                  Une erreur est survenue. Réessayez ou contactez-nous directement.
+                </p>
+              )}
               <p className="text-xs text-center text-lokoto-gray-medium">
                 Vos données restent confidentielles. Aucun spam.
               </p>
             </form>
+              </>
+            )}
           </div>
 
           {/* Contact Info */}
@@ -349,7 +397,7 @@ const Contact = () => {
             </div>
 
             <div className="text-sm text-lokoto-gray-medium">
-              © 2025 Lokoto — Fait avec ❤️ à Dakar
+              © 2026 Lokoto — Fait avec ❤️ à Dakar
             </div>
           </div>
         </div>

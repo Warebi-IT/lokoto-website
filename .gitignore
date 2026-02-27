@@ -1,1 +1,12 @@
 node_modules
+
+# Build
+dist/
+
+# Environment — NE JAMAIS COMMITTER
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store

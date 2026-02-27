@@ -25,7 +25,7 @@ const FeatureAccounting = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=130%',
+          end: '+=80%',
           pin: true,
           scrub: 0.6,
         }
@@ -33,21 +33,21 @@ const FeatureAccounting = () => {
 
       scrollTl.fromTo(
         imageRef.current,
-        { x: '-55vw', opacity: 0 },
+        { x: '-25vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none' },
         0
       );
 
       scrollTl.fromTo(
         [badgeRef.current, headlineRef.current, bodyRef.current],
-        { x: '40vw', opacity: 0 },
+        { x: '18vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
         0.05
       );
 
       scrollTl.fromTo(
         bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '20vw', opacity: 0 },
+        { x: '12vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
         0.15
       );
@@ -55,15 +55,15 @@ const FeatureAccounting = () => {
       scrollTl.fromTo(
         imageRef.current,
         { x: 0, opacity: 1 },
-        { x: '-18vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '-12vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         [badgeRef.current, headlineRef.current, bodyRef.current, bulletsRef.current],
         { x: 0, opacity: 1 },
-        { x: '18vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '12vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
     }, section);
 
@@ -128,7 +128,7 @@ const FeatureAccounting = () => {
         <img
           src="/finance prenium.png"
           alt="Finance Premium Lokoto"
-          className="w-full h-full object-contain bg-white"
+          className="w-full h-full object-contain bg-[#F6F7F6]"
         />
       </div>
     </section>

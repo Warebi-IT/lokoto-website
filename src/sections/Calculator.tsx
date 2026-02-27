@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TrendingUp, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TAUX_HORAIRE = 1_000; // FCFA/h — coût du temps admin au Sénégal
+const TAUX_HORAIRE = 1_000;
 
 const fmt = (n: number) =>
   new Intl.NumberFormat('fr-FR').format(Math.round(n));
@@ -21,31 +21,31 @@ interface SliderProps {
   onChange: (v: number) => void;
 }
 
-const Slider = ({ label, hint, value, min, max, step, display, onChange }: SliderProps) => (
-  <div className="space-y-2">
-    <div className="flex justify-between items-baseline">
-      <div>
-        <span className="text-sm font-semibold text-lokoto-gray">{label}</span>
-        {hint && <span className="text-xs text-lokoto-gray-medium ml-1.5">{hint}</span>}
+const Slider = ({ label, hint, value, min, max, step, display, onChange }: SliderProps) => {
+  const pct = ((value - min) / (max - min)) * 100;
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-between items-baseline">
+        <span className="text-xs font-semibold uppercase tracking-wider text-lokoto-gray-medium/50">
+          {label}{hint && <span className="normal-case tracking-normal ml-1">{hint}</span>}
+        </span>
+        <span className="text-[22px] font-extrabold text-lokoto-gray tabular-nums leading-none">
+          {display}
+        </span>
       </div>
-      <span className="text-sm font-bold text-lokoto-green tabular-nums">{display}</span>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="calc-slider"
+        style={{ '--fill': `${pct}%` } as React.CSSProperties}
+      />
     </div>
-    <input
-      type="range"
-      min={min}
-      max={max}
-      step={step}
-      value={value}
-      onChange={(e) => onChange(Number(e.target.value))}
-      className="w-full h-2 rounded-full cursor-pointer"
-      style={{ accentColor: '#2ECC71' }}
-    />
-    <div className="flex justify-between text-xs text-black/25">
-      <span>{min.toLocaleString('fr-FR')}</span>
-      <span>{max.toLocaleString('fr-FR')}</span>
-    </div>
-  </div>
-);
+  );
+};
 
 const Calculator = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -57,7 +57,6 @@ const Calculator = () => {
   const [taux,        setTaux]        = useState(55);
   const [heuresAdmin, setHeuresAdmin] = useState(10);
 
-  // ── Calculs ──────────────────────────────────────────────────────
   const revenuActuel  = vehicules * prixJour * (taux / 100) * 30;
   const tauxLokoto    = Math.min(taux + 15, 95);
   const revenuNet     = vehicules * prixJour * (tauxLokoto / 100) * 30;
@@ -66,7 +65,9 @@ const Calculator = () => {
   const economieTemps = tempsRecupere * TAUX_HORAIRE;
   const gainTotal     = gainRevenu + economieTemps;
 
-  useEffect(() => {
+  const barActuel = Math.round((revenuActuel / revenuNet) * 100);
+
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
     const ctx = gsap.context(() => {
@@ -94,38 +95,37 @@ const Calculator = () => {
       <div className="px-6 lg:px-[7vw]">
 
         {/* Heading */}
-        <div ref={headingRef} className="text-center mb-12 lg:mb-16">
+        <div ref={headingRef} className="mb-12 lg:mb-16">
           <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray mb-4">
             Combien pourriez-vous<br />
             <span className="text-lokoto-green">gagner avec Lokoto ?</span>
           </h2>
-          <p className="text-lg text-lokoto-gray-medium max-w-xl mx-auto">
-            Renseignez les données de votre flotte et voyez l'impact en temps réel.
+          <p className="text-lg text-lokoto-gray-medium max-w-xl">
+            Ajustez les paramètres de votre flotte et voyez l'impact en temps réel.
           </p>
         </div>
 
         {/* Card */}
         <div
           ref={cardRef}
-          className="max-w-5xl mx-auto rounded-[34px] shadow-card overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white"
+          className="max-w-5xl mx-auto rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-2 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
         >
 
           {/* ── Gauche : sliders ── */}
-          <div className="p-8 lg:p-10 space-y-7 border-b lg:border-b-0 lg:border-r border-black/[0.06]">
-            <div className="flex items-center gap-2 text-xs font-semibold text-lokoto-green uppercase tracking-wider">
-              <TrendingUp size={14} />
-              Votre flotte aujourd'hui
-            </div>
+          <div className="p-8 lg:p-10 space-y-8 bg-white border-b lg:border-b-0 lg:border-r border-black/[0.05]">
+            <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/50">
+              Votre flotte
+            </p>
 
             <Slider
-              label="Nombre de véhicules"
+              label="Véhicules"
               value={vehicules}
               min={1} max={50} step={1}
-              display={`${vehicules} véhicule${vehicules > 1 ? 's' : ''}`}
+              display={`${vehicules}`}
               onChange={setVehicules}
             />
             <Slider
-              label="Prix de location moyen"
+              label="Prix moyen"
               hint="/ jour"
               value={prixJour}
               min={15_000} max={100_000} step={5_000}
@@ -133,10 +133,10 @@ const Calculator = () => {
               onChange={setPrixJour}
             />
             <Slider
-              label="Taux d'occupation actuel"
+              label="Occupation"
               value={taux}
               min={20} max={90} step={5}
-              display={`${taux} %`}
+              display={`${taux}%`}
               onChange={setTaux}
             />
             <Slider
@@ -144,7 +144,7 @@ const Calculator = () => {
               hint="/ semaine"
               value={heuresAdmin}
               min={2} max={40} step={1}
-              display={`${heuresAdmin} h`}
+              display={`${heuresAdmin}h`}
               onChange={setHeuresAdmin}
             />
           </div>
@@ -152,59 +152,59 @@ const Calculator = () => {
           {/* ── Droite : résultats ── */}
           <div className="p-8 lg:p-10 flex flex-col justify-between gap-8 bg-lokoto-gray">
 
-            <div className="space-y-6">
+            {/* Hero gain */}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-white/30 mb-4">
+                Gain estimé / mois
+              </p>
+              <div className="text-[52px] lg:text-[64px] font-extrabold text-lokoto-green leading-none tabular-nums">
+                +{fmt(gainTotal)}
+              </div>
+              <p className="text-sm text-white/30 mt-2 tabular-nums">
+                FCFA &nbsp;·&nbsp; soit +{fmt(gainTotal * 12)} / an
+              </p>
+            </div>
 
-              {/* Comparaison revenus */}
-              <div className="grid grid-cols-2 gap-4">
+            {/* Barres comparatives */}
+            <div className="space-y-4">
+              {/* Avant */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs">
+                  <span className="text-white/40">Revenus actuels</span>
+                  <span className="text-white/50 tabular-nums">{fmt(revenuActuel)} FCFA</span>
+                </div>
+                <div className="h-1.5 bg-white/[0.07] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-white/25 rounded-full transition-all duration-500"
+                    style={{ width: `${barActuel}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Avec Lokoto */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs">
+                  <span className="text-white/40">
+                    Avec Lokoto
+                    <span className="ml-1.5 text-lokoto-green font-semibold">+{tauxLokoto - taux}%</span>
+                  </span>
+                  <span className="text-white tabular-nums font-medium">{fmt(revenuNet)} FCFA</span>
+                </div>
+                <div className="h-1.5 bg-white/[0.07] rounded-full overflow-hidden">
+                  <div className="h-full bg-lokoto-green rounded-full transition-all duration-500 w-full" />
+                </div>
+              </div>
+
+              {/* Économie temps */}
+              <div className="flex justify-between items-center pt-1">
                 <div>
-                  <div className="text-xs text-white/40 mb-1">Revenus actuels / mois</div>
-                  <div className="text-xl font-bold text-white/60 tabular-nums">
-                    {fmt(revenuActuel)} <span className="text-sm font-normal">FCFA</span>
-                  </div>
+                  <p className="text-xs text-white/40">Temps admin récupéré</p>
+                  <p className="text-[11px] text-white/20 mt-0.5">{tempsRecupere}h × 1 000 FCFA/h</p>
                 </div>
-                <div>
-                  <div className="text-xs text-white/40 mb-1">
-                    Avec Lokoto / mois
-                    <span className="ml-1 text-lokoto-green">+{tauxLokoto - taux}%</span>
-                  </div>
-                  <div className="text-xl font-bold text-white tabular-nums">
-                    {fmt(revenuNet)} <span className="text-sm font-normal">FCFA</span>
-                  </div>
-                </div>
+                <span className="text-sm font-semibold tabular-nums" style={{ color: '#F1C40F' }}>
+                  +{fmt(economieTemps)} FCFA
+                </span>
               </div>
-
-              <div className="border-t border-white/10" />
-
-              {/* Décomposition */}
-              <div className="space-y-3">
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-white/50">Gain sur les revenus</span>
-                  <span className="font-semibold text-white tabular-nums">+{fmt(gainRevenu)} FCFA</span>
-                </div>
-                <div className="flex justify-between items-start text-sm">
-                  <div>
-                    <div className="text-white/50">Économie temps admin</div>
-                    <div className="text-xs text-white/25 mt-0.5">
-                      {tempsRecupere} h récupérées × 1 000 FCFA/h
-                    </div>
-                  </div>
-                  <span className="font-semibold text-lokoto-gold tabular-nums">+{fmt(economieTemps)} FCFA</span>
-                </div>
-              </div>
-
-              <div className="border-t border-white/10" />
-
-              {/* Total */}
-              <div>
-                <div className="text-xs text-white/40 uppercase tracking-wider mb-2">Gain total estimé / mois</div>
-                <div className="text-5xl font-extrabold text-lokoto-green tabular-nums leading-none">
-                  +{fmt(gainTotal)}
-                </div>
-                <div className="text-sm text-lokoto-green/60 mt-2 tabular-nums">
-                  FCFA — soit +{fmt(gainTotal * 12)} FCFA / an
-                </div>
-              </div>
-
             </div>
 
             {/* CTA */}
@@ -216,8 +216,8 @@ const Calculator = () => {
                 Je veux ces gains
                 <ArrowRight size={16} />
               </button>
-              <p className="text-xs text-white/25 text-center">
-                Hypothèses : +15% d'occupation · 70% du temps admin automatisé · 1 000 FCFA/h
+              <p className="text-[11px] text-white/20 text-center leading-relaxed">
+                +15% d'occupation · 70% du temps admin automatisé · 1 000 FCFA/h
               </p>
             </div>
 

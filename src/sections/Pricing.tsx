@@ -10,7 +10,8 @@ const plans = [
     icon: Gift,
     badge: 'Pour démarrer',
     name: 'Gratuit',
-    price: '0€',
+    price: '0',
+    currency: 'FCFA',
     period: '/ mois',
     limit: 'Jusqu\'à 15 locations / mois',
     highlight: false,
@@ -28,7 +29,8 @@ const plans = [
     icon: Zap,
     badge: 'Le plus populaire',
     name: 'Pro',
-    price: '25€',
+    price: '16 500',
+    currency: 'FCFA',
     period: '/ mois',
     limit: 'Locations illimitées',
     highlight: true,
@@ -47,7 +49,8 @@ const plans = [
     icon: Star,
     badge: 'Tout inclus',
     name: 'Premium',
-    price: '35€',
+    price: '23 000',
+    currency: 'FCFA',
     period: '/ mois',
     limit: 'Locations illimitées + accès total',
     highlight: false,
@@ -151,11 +154,14 @@ const Pricing = () => {
                   <h3 className={`text-xl font-bold mb-3 ${plan.highlight ? 'text-white' : 'text-lokoto-gray'}`}>
                     {plan.name}
                   </h3>
-                  <div className="flex items-end gap-1">
-                    <span className={`text-5xl font-extrabold leading-none ${plan.highlight ? 'text-lokoto-green' : 'text-lokoto-gray'}`}>
+                  <div className="flex items-end gap-1.5 flex-wrap">
+                    <span className={`text-4xl font-extrabold leading-none ${plan.highlight ? 'text-lokoto-green' : 'text-lokoto-gray'}`}>
                       {plan.price}
                     </span>
-                    <span className={`text-sm mb-1 ${plan.highlight ? 'text-white/50' : 'text-lokoto-gray-medium'}`}>
+                    <span className={`text-sm font-bold mb-0.5 ${plan.highlight ? 'text-lokoto-green/70' : 'text-lokoto-gray-medium'}`}>
+                      {plan.currency}
+                    </span>
+                    <span className={`text-sm mb-0.5 ${plan.highlight ? 'text-white/50' : 'text-lokoto-gray-medium'}`}>
                       {plan.period}
                     </span>
                   </div>
@@ -211,7 +217,7 @@ const Pricing = () => {
 
         {/* Footer note */}
         <p className="text-center text-sm text-lokoto-gray-medium mt-10">
-          Sans engagement · Résiliable à tout moment · Tarif en euros, paiement local disponible
+          Sans engagement · Résiliable à tout moment · Tarifs en Franc CFA (XOF)
         </p>
       </div>
     </section>

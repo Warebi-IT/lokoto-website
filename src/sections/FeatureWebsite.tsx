@@ -29,7 +29,7 @@ const FeatureWebsite = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=160%',
+          end: '+=90%',
           pin: true,
           scrub: 0.6,
         },
@@ -38,7 +38,7 @@ const FeatureWebsite = () => {
       // Image wrapper slides in from right
       scrollTl.fromTo(
         imageRef.current,
-        { x: '55vw', scale: 0.96, opacity: 0 },
+        { x: '25vw', scale: 0.98, opacity: 0 },
         { x: 0, scale: 1, opacity: 1, ease: 'none' },
         0
       );
@@ -46,21 +46,21 @@ const FeatureWebsite = () => {
       // Text slides in from left
       scrollTl.fromTo(
         [labelRef.current, headlineRef.current, bodyRef.current],
-        { x: '-35vw', opacity: 0 },
+        { x: '-18vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
         0.05
       );
 
       scrollTl.fromTo(
         bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '-20vw', opacity: 0 },
+        { x: '-12vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
         0.15
       );
 
       scrollTl.fromTo(
         tagsRef.current,
-        { x: '-20vw', opacity: 0 },
+        { x: '-12vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none' },
         0.28
       );
@@ -69,15 +69,15 @@ const FeatureWebsite = () => {
       scrollTl.fromTo(
         imageRef.current,
         { x: 0, opacity: 1 },
-        { x: '22vw', opacity: 0, ease: 'power2.in' },
-        0.75
+        { x: '14vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         [labelRef.current, headlineRef.current, bodyRef.current, bulletsRef.current, tagsRef.current],
         { x: 0, opacity: 1 },
-        { x: '-14vw', opacity: 0, ease: 'power2.in' },
-        0.75
+        { x: '-10vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
     }, section);
 
@@ -110,11 +110,11 @@ const FeatureWebsite = () => {
       st = ScrollTrigger.create({
         trigger: section,
         start: 'top top',
-        end: '+=160%',
+        end: '+=90%',
         scrub: 0.6,
         onUpdate: (self) => {
-          // Scroll the image only while it's visible (progress 0.05 → 0.74)
-          const p = gsap.utils.clamp(0, 1, (self.progress - 0.05) / 0.69);
+          // Scroll the image only while it's visible (progress 0.05 → 0.82)
+          const p = gsap.utils.clamp(0, 1, (self.progress - 0.05) / 0.77);
           gsap.set(img, { y: -overflow * p });
         },
       });

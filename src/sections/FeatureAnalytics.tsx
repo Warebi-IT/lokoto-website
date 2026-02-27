@@ -25,7 +25,7 @@ const FeatureAnalytics = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=130%',
+          end: '+=80%',
           pin: true,
           scrub: 0.6,
         }
@@ -33,21 +33,21 @@ const FeatureAnalytics = () => {
 
       scrollTl.fromTo(
         imageRef.current,
-        { x: '55vw', scale: 0.98, opacity: 0 },
+        { x: '25vw', scale: 0.98, opacity: 0 },
         { x: 0, scale: 1, opacity: 1, ease: 'none' },
         0
       );
 
       scrollTl.fromTo(
         [badgeRef.current, headlineRef.current, bodyRef.current],
-        { x: '-35vw', opacity: 0 },
+        { x: '-18vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
         0.05
       );
 
       scrollTl.fromTo(
         bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '-20vw', opacity: 0 },
+        { x: '-12vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
         0.15
       );
@@ -55,15 +55,15 @@ const FeatureAnalytics = () => {
       scrollTl.fromTo(
         imageRef.current,
         { x: 0, opacity: 1 },
-        { x: '22vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '14vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         [badgeRef.current, headlineRef.current, bodyRef.current, bulletsRef.current],
         { x: 0, opacity: 1 },
-        { x: '-14vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '-10vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
     }, section);
 

@@ -24,7 +24,7 @@ const Problem = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=130%',
+          end: '+=80%',
           pin: true,
           scrub: 0.6,
         }
@@ -32,14 +32,14 @@ const Problem = () => {
 
       scrollTl.fromTo(
         imageRef.current,
-        { x: '-55vw', rotate: -2, opacity: 0 },
+        { x: '-25vw', rotate: -1, opacity: 0 },
         { x: 0, rotate: 0, opacity: 1, ease: 'none' },
         0
       );
 
       scrollTl.fromTo(
         headlineRef.current,
-        { x: '40vw', opacity: 0 },
+        { x: '20vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none' },
         0.05
       );
@@ -61,22 +61,22 @@ const Problem = () => {
       scrollTl.fromTo(
         imageRef.current,
         { x: 0, scale: 1, opacity: 1 },
-        { x: '-18vw', scale: 1.04, opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '-12vw', scale: 1.02, opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         headlineRef.current,
         { x: 0, opacity: 1 },
-        { x: '18vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '12vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         [captionRef.current, ctaRef.current],
         { y: 0, opacity: 1 },
-        { y: 20, opacity: 0, ease: 'power2.in' },
-        0.75
+        { y: 15, opacity: 0, ease: 'power2.in' },
+        0.85
       );
     }, section);
 

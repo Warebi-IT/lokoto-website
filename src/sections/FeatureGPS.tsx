@@ -25,7 +25,7 @@ const FeatureGPS = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=130%',
+          end: '+=80%',
           pin: true,
           scrub: 0.6,
         }
@@ -33,21 +33,21 @@ const FeatureGPS = () => {
 
       scrollTl.fromTo(
         imageRef.current,
-        { x: '-55vw', opacity: 0 },
+        { x: '-25vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none' },
         0
       );
 
       scrollTl.fromTo(
         [labelRef.current, headlineRef.current, bodyRef.current],
-        { x: '40vw', opacity: 0 },
+        { x: '18vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
         0.05
       );
 
       scrollTl.fromTo(
         bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '20vw', opacity: 0 },
+        { x: '12vw', opacity: 0 },
         { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
         0.15
       );
@@ -55,15 +55,15 @@ const FeatureGPS = () => {
       scrollTl.fromTo(
         imageRef.current,
         { x: 0, opacity: 1 },
-        { x: '-18vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '-12vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
 
       scrollTl.fromTo(
         [labelRef.current, headlineRef.current, bodyRef.current, bulletsRef.current],
         { x: 0, opacity: 1 },
-        { x: '18vw', opacity: 0, ease: 'power2.in' },
-        0.70
+        { x: '12vw', opacity: 0, ease: 'power2.in' },
+        0.82
       );
     }, section);
 
@@ -103,7 +103,7 @@ const FeatureGPS = () => {
           ref={bodyRef}
           className="text-base lg:text-lg text-lokoto-gray-medium leading-relaxed mb-8"
         >
-          Boîtier GPS fourni et installé. Géofencing, alertes et suivi kilométrique en direct.
+          Lokoto s'occupe de tout : boîtier livré, installé et connecté à votre tableau de bord. Vos véhicules ne disparaissent plus jamais dans la nature.
         </p>
 
         <ul ref={bulletsRef} className="space-y-3">

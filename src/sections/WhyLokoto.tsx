@@ -1,8 +1,7 @@
-import { useRef, useEffect } from 'react';
-import React from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CreditCard, Globe, Cpu, Brain, WifiOff } from 'lucide-react';
+import { MapPin, Brain, WifiOff } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +10,7 @@ const WhyLokoto = () => {
   const headingRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
@@ -36,13 +35,12 @@ const WhyLokoto = () => {
       if (cards) {
         gsap.fromTo(
           cards,
-          { y: 60, scale: 0.98, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
             y: 0,
-            scale: 1,
             opacity: 1,
-            duration: 0.6,
-            stagger: 0.08,
+            duration: 0.5,
+            stagger: 0.07,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: cardsRef.current,
@@ -56,35 +54,6 @@ const WhyLokoto = () => {
 
     return () => ctx.revert();
   }, []);
-
-  const advantages: { icon: React.ElementType; title: string; description: string; wide?: boolean }[] = [
-    {
-      icon: CreditCard,
-      title: '0 FCFA d\'abonnement',
-      description: 'Pas de frais fixes. Vous ne payez qu\'une petite commission quand vous gagnez de l\'argent.',
-    },
-    {
-      icon: Globe,
-      title: 'Conçu pour le Sénégal',
-      description: 'Interface en français, pensée mobile-first, adaptée aux réalités du marché local.',
-    },
-    {
-      icon: Cpu,
-      title: 'GPS intégré, clé en main',
-      description: 'On vous fournit et installe le boîtier. Rien à configurer, tout marche dès le premier jour.',
-    },
-    {
-      icon: Brain,
-      title: 'Intelligence prédictive',
-      description: 'Anticipez les périodes de forte demande grâce à un algorithme qui apprend de vos données.',
-    },
-    {
-      icon: WifiOff,
-      title: 'Fonctionne sans connexion',
-      description: 'Le délestage ne stoppe pas votre activité. Lokoto continue de fonctionner hors ligne — vos données se synchronisent automatiquement dès que la connexion revient.',
-      wide: true,
-    },
-  ];
 
   return (
     <section
@@ -102,26 +71,78 @@ const WhyLokoto = () => {
 
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {advantages.map((advantage, index) => (
-            <div
-              key={index}
-              className={`advantage-card p-6 lg:p-8 bg-white rounded-[28px] border border-black/[0.06] hover:border-lokoto-green/30 hover:-translate-y-1 transition-all duration-300 ${advantage.wide ? 'md:col-span-2 flex flex-col md:flex-row md:items-center md:gap-10' : ''}`}
-            >
-              <div className={`flex-shrink-0 w-12 h-12 rounded-2xl bg-lokoto-green/10 flex items-center justify-center mb-5 ${advantage.wide ? 'md:mb-0 md:w-16 md:h-16' : ''}`}>
-                <advantage.icon size={advantage.wide ? 28 : 24} className="text-lokoto-green" />
+          {/* ── Card 1 : 0 FCFA — stat géante, 2 colonnes ── */}
+          <div className="advantage-card md:col-span-1 lg:col-span-2 bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/60 mb-3">
+                Modèle économique
+              </p>
+              <div className="text-[52px] lg:text-[68px] font-extrabold leading-none tracking-[-0.04em] text-lokoto-green">
+                0 FCFA
               </div>
-              <div>
-                <h3 className="text-xl lg:text-2xl font-bold text-lokoto-gray mb-3">
-                  {advantage.title}
-                </h3>
-                <p className="text-lokoto-gray-medium leading-relaxed">
-                  {advantage.description}
-                </p>
+              <div className="text-sm font-medium text-lokoto-gray-medium mt-1">
+                d'abonnement mensuel
               </div>
             </div>
-          ))}
+            <p className="text-lokoto-gray-medium text-sm leading-relaxed mt-6 max-w-md">
+              Pas de frais fixes. Vous payez uniquement une petite commission sur vos revenus — quand vous gagnez, on gagne.
+            </p>
+          </div>
+
+          {/* ── Card 2 : Sénégal — dark ── */}
+          <div className="advantage-card bg-lokoto-gray rounded-[24px] p-8 flex flex-col justify-between min-h-[210px]">
+            <span className="text-5xl leading-none">🇸🇳</span>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Conçu pour le Sénégal
+              </h3>
+              <p className="text-white/55 text-sm leading-relaxed">
+                Interface en français, mobile-first, adaptée aux réalités du marché local.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Card 3 : GPS J+1 ── */}
+          <div className="advantage-card bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+            <MapPin size={24} className="text-lokoto-green" />
+            <div>
+              <div className="text-[44px] font-extrabold leading-none tracking-[-0.03em] text-lokoto-gray mb-3">
+                J+1
+              </div>
+              <h3 className="text-base font-bold text-lokoto-gray mb-1.5">GPS clé en main</h3>
+              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+                Boîtier fourni et installé par nos équipes. Opérationnel dès le lendemain.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Card 4 : IA ── */}
+          <div className="advantage-card bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+            <Brain size={24} className="text-lokoto-green" />
+            <div>
+              <h3 className="text-lg font-bold text-lokoto-gray mb-2">
+                Intelligence prédictive
+              </h3>
+              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+                Anticipez les périodes de forte demande. L'algorithme apprend de vos données au fil du temps.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Card 5 : Hors ligne — accent vert ── */}
+          <div className="advantage-card md:col-span-2 lg:col-span-1 bg-lokoto-green/10 border border-lokoto-green/15 rounded-[24px] p-8 flex flex-col justify-between min-h-[210px]">
+            <WifiOff size={24} className="text-lokoto-green" />
+            <div>
+              <h3 className="text-lg font-bold text-lokoto-gray mb-2">
+                Fonctionne sans connexion
+              </h3>
+              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+                Le délestage ne stoppe pas votre activité. Vos données se synchronisent automatiquement à la reconnexion.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

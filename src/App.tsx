@@ -9,7 +9,6 @@ import Spotlight from './components/Spotlight';
 // Sections
 import Hero from './sections/Hero';
 import Problem from './sections/Problem';
-import ProductShowcase from './sections/ProductShowcase';
 import FeatureCRM from './sections/FeatureCRM';
 import FeatureGPS from './sections/FeatureGPS';
 import FeatureAnalytics from './sections/FeatureAnalytics';
@@ -100,7 +99,6 @@ function App() {
         {/* Pinned Sections (z-index increases) */}
         <Hero />
         <Problem />
-        <ProductShowcase />
         <FeatureCRM />
         <FeatureGPS />
         <FeatureAnalytics />

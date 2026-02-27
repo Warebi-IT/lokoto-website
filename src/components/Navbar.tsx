@@ -1,25 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
 
   const navLinks = [
@@ -31,80 +26,102 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-sm'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="w-full px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-xl lg:text-2xl font-bold text-lokoto-gray hover:text-lokoto-green transition-colors"
-            >
-              Lokoto
-            </button>
+      {/* ── Floating pill nav ── */}
+      <div className="fixed top-5 left-0 right-0 z-[200] flex justify-center px-4 pointer-events-none">
+        <nav
+          className={cn(
+            'flex items-center gap-1 px-2 py-2 rounded-full border pointer-events-auto transition-all duration-500',
+            isScrolled
+              ? 'bg-white/85 backdrop-blur-xl border-black/[0.07] shadow-[0_8px_32px_rgba(0,0,0,0.10)]'
+              : 'bg-white/25 backdrop-blur-md border-white/40 shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
+          )}
+        >
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="px-4 py-1.5 text-base font-bold text-lokoto-gray hover:text-lokoto-green transition-colors duration-200"
+          >
+            Lokoto
+          </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-sm font-medium text-lokoto-gray-medium hover:text-lokoto-green transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+          {/* Separator */}
+          <div className="hidden lg:block w-px h-4 bg-black/10 mx-1" />
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
+          {/* Desktop links */}
+          <div className="hidden lg:flex items-center gap-0.5">
+            {navLinks.map((link) => (
               <button
-                onClick={() => scrollToSection('contact')}
-                className="bg-lokoto-green text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="px-4 py-1.5 text-sm font-medium text-lokoto-gray-medium hover:text-lokoto-gray rounded-full hover:bg-black/[0.05] transition-all duration-200"
               >
-                Rejoindre la liste
+                {link.label}
               </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-lokoto-gray hover:text-lokoto-green transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            ))}
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 z-30 bg-white transition-transform duration-300 lg:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className="text-2xl font-semibold text-lokoto-gray hover:text-lokoto-green transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
+          {/* Separator */}
+          <div className="hidden lg:block w-px h-4 bg-black/10 mx-1" />
+
+          {/* Desktop CTA */}
           <button
             onClick={() => scrollToSection('contact')}
-            className="bg-lokoto-green text-white font-semibold px-6 py-3 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 mt-4"
+            className="hidden lg:flex items-center bg-lokoto-green text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
           >
             Rejoindre la liste
           </button>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-full text-lokoto-gray hover:bg-black/[0.05] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </nav>
+      </div>
+
+      {/* ── Mobile dropdown panel ── */}
+      <div
+        className={cn(
+          'fixed inset-0 z-[190] lg:hidden transition-all duration-300',
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        )}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+
+        {/* Panel */}
+        <div
+          className={cn(
+            'absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl rounded-3xl border border-black/[0.06] shadow-[0_24px_48px_rgba(0,0,0,0.14)] p-4 transition-all duration-300',
+            isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+          )}
+        >
+          <div className="flex flex-col gap-0.5">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-left text-base font-semibold text-lokoto-gray hover:text-lokoto-green hover:bg-lokoto-green/5 px-4 py-3 rounded-2xl transition-all duration-200"
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-3 pt-3 border-t border-black/[0.06]">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="w-full bg-lokoto-green text-white font-semibold px-6 py-3.5 rounded-full hover:bg-lokoto-green-dark transition-all duration-300 shadow-lg"
+            >
+              Rejoindre la liste
+            </button>
+          </div>
         </div>
       </div>
     </>
