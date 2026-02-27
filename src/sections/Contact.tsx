@@ -30,6 +30,13 @@ const Contact = () => {
     message: "",
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [phoneError, setPhoneError] = useState("");
+
+  const validatePhone = (value: string) => {
+    // Accepte formats internationaux et locaux : +221 77 123 45 67, 0033612345678, etc.
+    const clean = value.replace(/[\s\-().]/g, "");
+    return /^\+?\d{8,15}$/.test(clean);
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -96,6 +103,11 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validatePhone(formData.phone)) {
+      setPhoneError("Numéro invalide (ex : +221 77 123 45 67)");
+      return;
+    }
+    setPhoneError("");
     setStatus('loading');
     try {
       const res = await fetch('/', {
@@ -175,7 +187,7 @@ const Contact = () => {
                   On vous recontacte sous 24h sur WhatsApp ou par email.
                 </p>
                 <button
-                  onClick={() => setStatus('idle')}
+                  onClick={() => { setStatus('idle'); setPhoneError(""); }}
                   className="mt-2 text-sm text-lokoto-green underline underline-offset-4 hover:text-lokoto-green-dark transition-colors"
                 >
                   Envoyer une autre demande
@@ -230,13 +242,17 @@ const Contact = () => {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                    if (phoneError) setPhoneError("");
+                  }}
                   placeholder="+221 XX XXX XX XX"
-                  className="rounded-xl border-black/10 focus:border-lokoto-green focus:ring-lokoto-green"
+                  className={`rounded-xl border-black/10 focus:border-lokoto-green focus:ring-lokoto-green ${phoneError ? "border-red-400 focus:border-red-400 focus:ring-red-400" : ""}`}
                   required
                 />
+                {phoneError && (
+                  <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                )}
               </div>
               <div>
                 <Label
