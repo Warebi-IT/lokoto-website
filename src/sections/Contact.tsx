@@ -357,32 +357,24 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links — à activer quand les comptes sont créés
             <div className="mt-10">
               <div className="text-sm text-lokoto-gray-medium mb-4">
                 Suivez-nous
               </div>
               <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm"
-                >
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm">
                   <Instagram size={20} />
                 </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm"
-                >
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm">
                   <Linkedin size={20} />
                 </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm"
-                >
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lokoto-gray hover:bg-lokoto-green hover:text-white transition-all duration-300 shadow-sm">
                   <Facebook size={20} />
                 </a>
               </div>
             </div>
+            */}
           </div>
         </div>
 
@@ -410,12 +402,11 @@ const Contact = () => {
               >
                 Contact
               </button>
-              <a
-                href="#"
-                className="text-sm text-lokoto-gray-medium hover:text-lokoto-green transition-colors"
-              >
+              {/* Mentions légales — à activer quand la page est rédigée
+              <a href="#" className="text-sm text-lokoto-gray-medium hover:text-lokoto-green transition-colors">
                 Mentions légales
               </a>
+              */}
             </div>
 
             <div className="text-sm text-lokoto-gray-medium">
