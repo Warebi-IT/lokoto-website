@@ -7,9 +7,9 @@ import {
   Mail,
   Phone,
   MessageCircle,
-  Instagram,
-  Linkedin,
-  Facebook,
+  // Instagram,
+  // Linkedin,
+  // Facebook,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
