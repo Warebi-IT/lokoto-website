@@ -77,17 +77,17 @@ const WhyLokoto = () => {
           <div className="advantage-card md:col-span-1 lg:col-span-2 bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/60 mb-3">
-                Modèle économique
+                Site autogénéré
               </p>
               <div className="text-[52px] lg:text-[68px] font-extrabold leading-none tracking-[-0.04em] text-lokoto-green">
-                0 FCFA
+                1 site web
               </div>
               <div className="text-sm font-medium text-lokoto-gray-medium mt-1">
-                d'abonnement mensuel
+                inclus dans votre abonnement
               </div>
             </div>
             <p className="text-lokoto-gray-medium text-sm leading-relaxed mt-6 max-w-md">
-              Pas de frais fixes. Vous payez uniquement une petite commission sur vos revenus — quand vous gagnez, on gagne.
+              Dès votre inscription, Lokoto génère automatiquement votre site de réservation en ligne — prêt à recevoir des clients, sans développeur ni coût supplémentaire.
             </p>
           </div>
 

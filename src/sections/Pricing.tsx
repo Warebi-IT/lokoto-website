@@ -93,7 +93,7 @@ const Pricing = () => {
                 <span className="text-2xl font-bold text-white/60 mb-4">FCFA / mois</span>
               </div>
               <p className="text-white/50 text-sm mb-10">
-                Accès complet à toutes les fonctionnalités · Sans durée limitée pendant le lancement
+                Accès complet à toutes les fonctionnalités · Pendant le lancement
               </p>
 
               {/* Features grid */}
