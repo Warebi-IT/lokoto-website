@@ -83,7 +83,8 @@ const Hero = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 
   const stats = [
-    { value: '0 FCFA',  label: "d'abonnement" },
+    // { value: '0 FCFA',  label: "d'abonnement" },
+    { value: '100%',     label: 'web'   },
     { value: 'J+1',     label: 'GPS installé'  },
     { value: '100%',    label: 'mobile'         },
   ];
