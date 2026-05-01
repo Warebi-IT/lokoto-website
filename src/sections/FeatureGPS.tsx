@@ -17,53 +17,24 @@ const FeatureGPS = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) return;
-
     const ctx = gsap.context(() => {
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: '+=80%',
-          pin: true,
-          scrub: 0.6,
-        }
-      });
-
-      scrollTl.fromTo(
+      gsap.fromTo(
         imageRef.current,
-        { x: '-25vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none' },
-        0
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 80%' } }
       );
-
-      scrollTl.fromTo(
+      gsap.fromTo(
         [labelRef.current, headlineRef.current, bodyRef.current],
-        { x: '18vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
-        0.05
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.45, stagger: 0.07, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 75%' } }
       );
-
-      scrollTl.fromTo(
+      gsap.fromTo(
         bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '12vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
-        0.15
-      );
-
-      scrollTl.fromTo(
-        imageRef.current,
-        { x: 0, opacity: 1 },
-        { x: '-12vw', opacity: 0, ease: 'power2.in' },
-        0.82
-      );
-
-      scrollTl.fromTo(
-        [labelRef.current, headlineRef.current, bodyRef.current, bulletsRef.current],
-        { x: 0, opacity: 1 },
-        { x: '12vw', opacity: 0, ease: 'power2.in' },
-        0.82
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 70%' } }
       );
     }, section);
 

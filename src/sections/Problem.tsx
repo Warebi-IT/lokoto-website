@@ -16,67 +16,18 @@ const Problem = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) return;
-
     const ctx = gsap.context(() => {
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: '+=80%',
-          pin: true,
-          scrub: 0.6,
-        }
-      });
-
-      scrollTl.fromTo(
+      gsap.fromTo(
         imageRef.current,
-        { x: '-25vw', rotate: -1, opacity: 0 },
-        { x: 0, rotate: 0, opacity: 1, ease: 'none' },
-        0
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 80%' } }
       );
-
-      scrollTl.fromTo(
-        headlineRef.current,
-        { x: '20vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none' },
-        0.05
-      );
-
-      scrollTl.fromTo(
-        captionRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'none' },
-        0.10
-      );
-
-      scrollTl.fromTo(
-        ctaRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'none' },
-        0.15
-      );
-
-      scrollTl.fromTo(
-        imageRef.current,
-        { x: 0, scale: 1, opacity: 1 },
-        { x: '-12vw', scale: 1.02, opacity: 0, ease: 'power2.in' },
-        0.82
-      );
-
-      scrollTl.fromTo(
-        headlineRef.current,
-        { x: 0, opacity: 1 },
-        { x: '12vw', opacity: 0, ease: 'power2.in' },
-        0.82
-      );
-
-      scrollTl.fromTo(
-        [captionRef.current, ctaRef.current],
-        { y: 0, opacity: 1 },
-        { y: 15, opacity: 0, ease: 'power2.in' },
-        0.85
+      gsap.fromTo(
+        [headlineRef.current, captionRef.current, ctaRef.current],
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.45, stagger: 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 75%' } }
       );
     }, section);
 

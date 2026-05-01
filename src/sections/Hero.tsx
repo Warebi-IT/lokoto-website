@@ -17,64 +17,24 @@ const Hero = () => {
   /* ── Entrance ── */
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
       tl.fromTo(
         headlineRef.current?.querySelectorAll('.headline-line') || [],
-        { y: 55, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.09 },
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.07 },
         0
       );
-      tl.fromTo(subRef.current,   { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.35);
+      tl.fromTo(subRef.current,   { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, 0.25);
       tl.fromTo(
         ctaRef.current?.querySelectorAll('button') || [],
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.55, stagger: 0.07 },
-        0.5
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.06 },
+        0.35
       );
-      tl.fromTo(statsRef.current,    { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 0.65);
-      tl.fromTo(dashboardRef.current, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power2.out' }, 0.45);
+      tl.fromTo(statsRef.current,     { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, 0.45);
+      tl.fromTo(dashboardRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.3);
     }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  /* ── Scroll exit — desktop only ── */
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    if (window.matchMedia('(max-width: 767px)').matches) return;
-
-    const ctx = gsap.context(() => {
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: '+=80%',
-          pin: true,
-          scrub: 0.6,
-          onLeaveBack: () => {
-            gsap.set(headlineRef.current?.querySelectorAll('.headline-line') || [], { y: 0, opacity: 1 });
-            gsap.set(subRef.current,    { y: 0, opacity: 1 });
-            gsap.set(ctaRef.current?.querySelectorAll('button') || [], { y: 0, opacity: 1 });
-            gsap.set(statsRef.current,   { opacity: 1 });
-            gsap.set(dashboardRef.current, { y: 0, opacity: 1 });
-          },
-        },
-      });
-
-      scrollTl.fromTo(
-        headlineRef.current?.querySelectorAll('.headline-line') || [],
-        { y: 0, opacity: 1 }, { y: -40, opacity: 0, ease: 'power2.in' }, 0.82
-      );
-      scrollTl.fromTo(subRef.current,   { y: 0, opacity: 1 }, { y: -30, opacity: 0, ease: 'power2.in' }, 0.84);
-      scrollTl.fromTo(
-        ctaRef.current?.querySelectorAll('button') || [],
-        { y: 0, opacity: 1 }, { y: -20, opacity: 0, ease: 'power2.in' }, 0.86
-      );
-      scrollTl.fromTo(statsRef.current,     { opacity: 1 }, { opacity: 0, ease: 'power2.in' }, 0.87);
-      scrollTl.fromTo(dashboardRef.current, { y: 0, opacity: 1 }, { y: 50, opacity: 0, ease: 'power2.in' }, 0.82);
-    }, section);
 
     return () => ctx.revert();
   }, []);

@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, Globe, RefreshCw, ShoppingCart, Zap, Clock } from 'lucide-react';
@@ -16,117 +16,61 @@ const FeatureWebsite = () => {
   const bulletsRef = useRef<HTMLUListElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
 
-  // Main pinned animation (text + image wrapper enter/exit)
   useLayoutEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) return;
-
-    const ctx = gsap.context(() => {
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: '+=90%',
-          pin: true,
-          scrub: 0.6,
-        },
-      });
-
-      // Image wrapper slides in from right
-      scrollTl.fromTo(
-        imageRef.current,
-        { x: '25vw', scale: 0.98, opacity: 0 },
-        { x: 0, scale: 1, opacity: 1, ease: 'none' },
-        0
-      );
-
-      // Text slides in from left
-      scrollTl.fromTo(
-        [labelRef.current, headlineRef.current, bodyRef.current],
-        { x: '-18vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none', stagger: 0.03 },
-        0.05
-      );
-
-      scrollTl.fromTo(
-        bulletsRef.current?.querySelectorAll('li') || [],
-        { x: '-12vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none', stagger: 0.02 },
-        0.15
-      );
-
-      scrollTl.fromTo(
-        tagsRef.current,
-        { x: '-12vw', opacity: 0 },
-        { x: 0, opacity: 1, ease: 'none' },
-        0.28
-      );
-
-      // Exit
-      scrollTl.fromTo(
-        imageRef.current,
-        { x: 0, opacity: 1 },
-        { x: '14vw', opacity: 0, ease: 'power2.in' },
-        0.82
-      );
-
-      scrollTl.fromTo(
-        [labelRef.current, headlineRef.current, bodyRef.current, bulletsRef.current, tagsRef.current],
-        { x: 0, opacity: 1 },
-        { x: '-10vw', opacity: 0, ease: 'power2.in' },
-        0.82
-      );
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Separate effect: scroll inside the tall screenshot via translateY
-  useEffect(() => {
     const section = sectionRef.current;
     const img = imgInnerRef.current;
     const container = imgScrollContainerRef.current;
+    if (!section) return;
 
-    if (!section || !img || !container) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        imageRef.current,
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 80%' } }
+      );
+      gsap.fromTo(
+        [labelRef.current, headlineRef.current, bodyRef.current],
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.45, stagger: 0.07, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 75%' } }
+      );
+      gsap.fromTo(
+        bulletsRef.current?.querySelectorAll('li') || [],
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 70%' } }
+      );
+      gsap.fromTo(
+        tagsRef.current,
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 65%' } }
+      );
 
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) return;
+      // Scroll inside the tall screenshot
+      if (img && container && !window.matchMedia('(max-width: 767px)').matches) {
+        gsap.set(img, { y: 0 });
+        const setupScroll = () => {
+          const overflow = img.offsetHeight - container.offsetHeight;
+          if (overflow <= 0) return;
+          gsap.set(img, { y: 0 });
+          ScrollTrigger.create({
+            trigger: section,
+            start: 'top center',
+            end: 'bottom center',
+            scrub: 1,
+            onUpdate: (self) => {
+              gsap.set(img, { y: -overflow * self.progress });
+            },
+          });
+        };
+        if (img.complete) setupScroll();
+        else img.addEventListener('load', setupScroll, { once: true });
+      }
+    }, section);
 
-    // Force top position immediately before any async load
-    gsap.set(img, { y: 0 });
-
-    let st: ReturnType<typeof ScrollTrigger.create> | undefined;
-
-    const setupScroll = () => {
-      const overflow = img.offsetHeight - container.offsetHeight;
-      if (overflow <= 0) return;
-
-      // Reset to top
-      gsap.set(img, { y: 0 });
-
-      st = ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: '+=90%',
-        scrub: 0.6,
-        onUpdate: (self) => {
-          // Scroll the image only while it's visible (progress 0.05 → 0.82)
-          const p = gsap.utils.clamp(0, 1, (self.progress - 0.05) / 0.77);
-          gsap.set(img, { y: -overflow * p });
-        },
-      });
-    };
-
-    if (img.complete) {
-      setupScroll();
-    } else {
-      img.addEventListener('load', setupScroll, { once: true });
-    }
-
-    return () => st?.kill();
+    return () => ctx.revert();
   }, []);
 
   const bullets = [
