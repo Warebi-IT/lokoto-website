@@ -2,10 +2,10 @@ import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { WavyBackground } from '@/components/ui/wavy-background';
-import { useTheme } from '@/hooks/use-dark-mode';
+import { useThemeListener } from '@/hooks/use-dark-mode';
 
 const Hero = () => {
-  const { isDark } = useTheme();
+  const isDark = useThemeListener();
   const sectionRef    = useRef<HTMLElement>(null);
   const headlineRef   = useRef<HTMLDivElement>(null);
   const subRef        = useRef<HTMLParagraphElement>(null);
@@ -72,7 +72,7 @@ const Hero = () => {
 
           {/* Badge */}
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-white/80 dark:bg-[#1C201C]/80 border border-black/5 dark:border-white/[0.08] text-lokoto-gray dark:text-[#EDEFED] shadow-sm backdrop-blur-sm">
-            🇸🇳 Conçu au Sénégal, pour le Sénégal
+            🚀 Lancement 2026 — Inscrivez-vous gratuitement
           </span>
 
           {/* Headline */}
@@ -88,7 +88,7 @@ const Hero = () => {
             ref={subRef}
             className="text-base sm:text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-lg leading-relaxed"
           >
-            GPS, clients, comptabilité — tout en un.<br className="hidden sm:block" /> Sans abonnement mensuel.
+            La plateforme SaaS de gestion de flotte<br className="hidden sm:block" /> conçue pour le marché sénégalais.
           </p>
 
           {/* CTAs */}
@@ -111,7 +111,7 @@ const Hero = () => {
 
             <button
               onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border border-lokoto-green text-lokoto-green font-medium px-5 py-2.5 rounded-full hover:bg-lokoto-green hover:text-white transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 bg-white/60 backdrop-blur-sm text-sm"
+              className="border border-lokoto-green text-lokoto-green font-medium px-5 py-2.5 rounded-full hover:bg-lokoto-green hover:text-white transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 bg-white/60 dark:bg-white/5 backdrop-blur-sm text-sm"
             >
               <TrendingUp size={15} />
               Calculer mon gain

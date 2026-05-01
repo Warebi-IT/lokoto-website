@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, Clock } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,16 +51,15 @@ const FeatureAccounting = () => {
     <section
       ref={sectionRef}
       id="features"
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-[60]"
+      className="relative flex flex-col md:block w-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-[60]"
     >
       {/* Text block — order-1 on mobile (shown first), absolute on desktop */}
       <div className="order-1 px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[54vw] md:top-[16vh] md:w-[40vw]">
         <span
           ref={badgeRef}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-lokoto-gold/20 text-lokoto-gray mb-4"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-lokoto-green mb-4"
         >
-          <Clock size={14} />
-          Bientôt disponible
+          Comptabilité
         </span>
 
         <h2

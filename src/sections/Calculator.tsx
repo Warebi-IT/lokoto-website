@@ -217,7 +217,7 @@ const Calculator = () => {
                 <ArrowRight size={16} />
               </button>
               <p className="text-[11px] text-white/20 text-center leading-relaxed">
-                +15% d'occupation · 70% du temps admin automatisé · 1 000 FCFA/h
+                Hypothèses : +15% d'occupation constaté en moyenne · 70% du temps admin automatisé · valeur horaire estimée à 1 000 FCFA/h
               </p>
             </div>
 

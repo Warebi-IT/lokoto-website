@@ -50,7 +50,7 @@ const FeatureGPS = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-40"
+      className="relative flex flex-col md:block w-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-40"
     >
       {/* Text block — order-1 on mobile (shown first), absolute on desktop */}
       <div className="order-1 px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[54vw] md:top-[16vh] md:w-[40vw]">

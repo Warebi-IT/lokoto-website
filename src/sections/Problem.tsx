@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileText, Smartphone, AlertTriangle, Calculator } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,24 +45,36 @@ const Problem = () => {
     <section
       ref={sectionRef}
       id="problem"
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-20"
+      className="relative flex flex-col md:block w-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-20"
     >
       {/* Text block — order-1 on mobile (shown first), absolute on desktop */}
       <div className="order-1 px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[46vw] md:top-[22vh] md:w-[48vw]">
         <h2
           ref={headlineRef}
-          className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-6"
+          className="text-[28px] sm:text-[38px] lg:text-[48px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-6"
         >
           Vous gérez votre flotte<br />
-          <span className="text-lokoto-gray-medium">comme en 2005 ?</span>
+          <span className="text-lokoto-gray-medium dark:text-[#8A928A]">comme en 2005 ?</span>
         </h2>
 
-        <p
+        <div
           ref={captionRef}
-          className="text-base lg:text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-full md:max-w-[38vw] leading-relaxed mb-8"
+          className="space-y-3 mb-8"
         >
-          Si vous vous reconnaissez dans ces situations, Lokoto est fait pour vous.
-        </p>
+          {[
+            { icon: FileText,      text: 'Vos contrats traînent en papier ou sur Excel — vous en ratez toujours un.' },
+            { icon: Smartphone,    text: 'WhatsApp est votre seul outil de gestion : c\'est le chaos à la fin du mois.' },
+            { icon: AlertTriangle, text: 'Vous découvrez la panne quand le client appelle, jamais avant.' },
+            { icon: Calculator,    text: 'Calculer vos revenus par véhicule vous prend une demi-journée.' },
+          ].map(({ icon: Icon, text }, i) => (
+            <div key={i} className="flex items-start gap-3">
+              <span className="flex-shrink-0 mt-0.5 w-7 h-7 rounded-full bg-red-500/10 flex items-center justify-center">
+                <Icon size={14} className="text-red-500" />
+              </span>
+              <p className="text-sm lg:text-base text-lokoto-gray-medium dark:text-[#8A928A] leading-snug">{text}</p>
+            </div>
+          ))}
+        </div>
 
         <button
           ref={ctaRef}

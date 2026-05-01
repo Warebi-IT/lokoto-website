@@ -1,5 +1,3 @@
-import { ThemeContext, useDarkMode } from './hooks/use-dark-mode';
-
 // Components
 import Navbar from './components/Navbar';
 import Spotlight from './components/Spotlight';
@@ -20,12 +18,8 @@ import Team from './sections/Team';
 import Contact from './sections/Contact';
 
 function App() {
-  const theme = useDarkMode();
-
   return (
-    <ThemeContext.Provider value={theme}>
     <div className="relative">
-      {/* Aceternity Spotlight — cursor glow */}
       <Spotlight />
 
       {/* Noise overlay */}
@@ -37,10 +31,8 @@ function App() {
         }}
       />
 
-      {/* Navigation */}
       <Navbar />
 
-      {/* Main content */}
       <main className="relative">
         <Hero />
         <Problem />
@@ -57,7 +49,6 @@ function App() {
         <Contact />
       </main>
     </div>
-    </ThemeContext.Provider>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, Globe, RefreshCw, ShoppingCart, Zap, Clock } from 'lucide-react';
+import { Check, Globe, RefreshCw, ShoppingCart, Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,7 +89,7 @@ const FeatureWebsite = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-[65]"
+      className="relative flex flex-col md:block w-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-[65]"
     >
       {/* Text block */}
       <div className="px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[7vw] md:top-[14vh] md:w-[44vw]">
@@ -139,10 +139,6 @@ const FeatureWebsite = () => {
           ))}
         </div>
 
-        <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-lokoto-gold/20 text-lokoto-gray">
-          <Clock size={14} />
-          Bientôt disponible
-        </div>
       </div>
 
       {/* Screenshot wrapper */}

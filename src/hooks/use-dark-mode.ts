@@ -1,35 +1,31 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
-interface ThemeCtx {
-  isDark: boolean;
-  toggle: () => void;
-}
+export function useDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains('dark')
+  );
 
-export const ThemeContext = createContext<ThemeCtx>({ isDark: false, toggle: () => {} });
-
-export function useDarkMode(): ThemeCtx {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  const toggle = () => setIsDark(d => !d);
+  const toggle = () => {
+    const next = !isDark;
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+    setIsDark(next);
+    window.dispatchEvent(new CustomEvent('lokoto:theme', { detail: { isDark: next } }));
+  };
 
   return { isDark, toggle };
 }
 
-export function useTheme(): ThemeCtx {
-  return useContext(ThemeContext);
+export function useThemeListener() {
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains('dark')
+  );
+
+  useEffect(() => {
+    const handler = (e: Event) => setIsDark((e as CustomEvent<{ isDark: boolean }>).detail.isDark);
+    window.addEventListener('lokoto:theme', handler);
+    return () => window.removeEventListener('lokoto:theme', handler);
+  }, []);
+
+  return isDark;
 }

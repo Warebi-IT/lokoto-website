@@ -71,8 +71,7 @@ const Pricing = () => {
             <span className="text-lokoto-green">Lokoto est gratuit pour vous</span>
           </h2>
           <p className="text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-xl mx-auto">
-            Pas de carte bancaire. Pas d'engagement. Prenez Lokoto en main dès aujourd'hui
-            et découvrez comment transformer la gestion de votre flotte.
+            Inscrivez-vous maintenant — sans carte bancaire, sans engagement. Vous serez parmi les premiers à accéder au produit au lancement et à bénéficier du GPS gratuit.
           </p>
         </div>
 
@@ -113,7 +112,7 @@ const Pricing = () => {
                 onClick={scrollToContact}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-lokoto-green text-white font-semibold px-8 py-4 rounded-full text-base transition-all duration-300 hover:bg-lokoto-green-dark shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
-                Prendre Lokoto en main
+                Rejoindre la liste gratuitement
                 <ArrowRight size={17} />
               </button>
             </div>

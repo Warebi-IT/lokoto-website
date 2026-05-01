@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTheme } from '@/hooks/use-dark-mode';
+import { useDarkMode } from '@/hooks/use-dark-mode';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isDark, toggle } = useTheme();
+  const { isDark, toggle } = useDarkMode();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 30);

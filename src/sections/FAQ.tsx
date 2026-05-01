@@ -58,12 +58,20 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'Comment fonctionne la commission ?',
-      answer: 'Nous prélevons un petit pourcentage sur chaque location enregistrée dans Lokoto. Pas de location = pas de frais. C\'est simple, transparent et aligné avec votre succès.',
+      question: 'Quel est le tarif après le lancement ?',
+      answer: 'Pendant la phase de lancement, Lokoto est entièrement gratuit. Après le lancement officiel, le modèle sera à la commission : un petit pourcentage uniquement sur les locations enregistrées dans Lokoto. Pas de location = pas de frais. Le taux exact sera communiqué aux premiers inscrits en priorité — d\'où l\'intérêt de rejoindre la liste maintenant.',
     },
     {
       question: 'Comment est installé le boîtier GPS ?',
       answer: 'Notre technicien se déplace pour installer le boîtier sur chacun de vos véhicules. L\'installation prend moins de 30 minutes par véhicule et est entièrement gratuite pour les 50 premiers inscrits.',
+    },
+    {
+      question: 'Lokoto fonctionne-t-il sans connexion internet stable ?',
+      answer: 'Oui. Lokoto est conçu pour les réalités du Sénégal : si vous perdez la connexion (délestage, zone peu couverte), l\'application continue de fonctionner en mode hors-ligne. Toutes vos données se synchronisent automatiquement dès que la connexion est rétablie.',
+    },
+    {
+      question: 'Puis-je importer mes données existantes (Excel, WhatsApp) ?',
+      answer: 'Oui. Notre équipe vous accompagne pour importer vos fichiers clients et véhicules existants. Que vous ayez des tableurs Excel ou des listes WhatsApp, on s\'occupe de la migration pour vous — sans perte de données.',
     },
     {
       question: 'Lokoto fonctionne-t-il sur téléphone ?',
@@ -71,11 +79,15 @@ const FAQ = () => {
     },
     {
       question: 'Mes données sont-elles sécurisées ?',
-      answer: 'Oui, vos données sont hébergées sur des serveurs sécurisés et ne sont jamais partagées avec des tiers. Nous utilisons un chiffrement de niveau bancaire pour protéger toutes vos informations.',
+      answer: 'Oui, vos données sont hébergées sur des serveurs sécurisés en Europe et ne sont jamais partagées avec des tiers. Vous êtes propriétaire de vos données et pouvez les exporter à tout moment.',
     },
     {
-      question: 'Puis-je essayer avant de m\'engager ?',
-      answer: 'Bien sûr. Les 30 premiers jours sont gratuits, sans engagement. Vous pouvez tester toutes les fonctionnalités et décider ensuite si Lokoto correspond à vos besoins.',
+      question: 'Lokoto fonctionne-t-il pour les minibus ou moto-taxis ?',
+      answer: 'Lokoto est conçu pour toute flotte de véhicules motorisés : voitures, SUV, minibus, pick-up. La version moto-taxi est en cours de développement. Si c\'est votre cas, mentionnez-le dans votre inscription — vous serez prioritaire.',
+    },
+    {
+      question: 'Y a-t-il un engagement de durée ?',
+      answer: 'Non. Lokoto n\'a aucun engagement de durée. Vous pouvez arrêter quand vous voulez, sans frais de résiliation. Pendant la phase de lancement, c\'est entièrement gratuit.',
     },
   ];
 
