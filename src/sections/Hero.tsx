@@ -1,10 +1,7 @@
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { WavyBackground } from '@/components/ui/wavy-background';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const sectionRef    = useRef<HTMLElement>(null);

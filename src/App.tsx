@@ -38,7 +38,6 @@ function App() {
 
       {/* Main content */}
       <main className="relative">
-        {/* Pinned Sections (z-index increases) */}
         <Hero />
         <Problem />
         <FeatureCRM />
@@ -46,8 +45,6 @@ function App() {
         <FeatureAnalytics />
         <FeatureAccounting />
         <FeatureWebsite />
-
-        {/* Flowing Sections */}
         <WhyLokoto />
         <Calculator />
         <Pricing />
