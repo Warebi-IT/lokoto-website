@@ -41,9 +41,10 @@ const Navbar = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="px-4 py-1.5 text-base font-bold text-lokoto-gray dark:text-[#EDEFED] hover:text-lokoto-green dark:hover:text-lokoto-green transition-colors duration-200"
+            className="relative px-3 py-1.5 hover:opacity-80 transition-opacity duration-200"
           >
-            Lokoto
+            <span className="text-base font-bold text-lokoto-gray dark:text-[#EDEFED]">Lokoto</span>
+            <img src="/logo.png" alt="" className="absolute -bottom-1 -right-1 h-4 w-auto" />
           </button>
 
           {/* Separator */}
