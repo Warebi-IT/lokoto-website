@@ -103,16 +103,16 @@ const Team = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#F6F7F6] py-20 lg:py-32 z-[100]"
+      className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[100]"
     >
       <div className="px-6 lg:px-[7vw]">
         <div ref={headingRef} className="text-center mb-12 lg:mb-16">
-          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray mb-4">
+          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-4">
             L'équipe derrière
             <br />
             <span className="text-lokoto-green">Lokoto</span>
           </h2>
-          <p className="text-lg text-lokoto-gray-medium max-w-xl mx-auto">
+          <p className="text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-xl mx-auto">
             Une équipe sénégalaise qui connaît le terrain, avec l'expertise
             technique pour bâtir la solution.
           </p>
@@ -125,7 +125,7 @@ const Team = () => {
           {team.map((member) => (
             <div
               key={member.name}
-              className="team-card bg-white rounded-[24px] p-6 border border-black/[0.06] hover:border-lokoto-green/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
+              className="team-card bg-white dark:bg-[#1C201C] rounded-[24px] p-6 border border-black/[0.06] dark:border-white/[0.07] hover:border-lokoto-green/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
             >
               {/* Avatar */}
               <div
@@ -136,10 +136,10 @@ const Team = () => {
               </div>
 
               {/* Infos */}
-              <div className="text-base font-bold text-lokoto-gray leading-tight mb-1">
+              <div className="text-base font-bold text-lokoto-gray dark:text-[#EDEFED] leading-tight mb-1">
                 {member.name}
               </div>
-              <div className="text-xs text-lokoto-gray-medium leading-snug mb-3">
+              <div className="text-xs text-lokoto-gray-medium dark:text-[#8A928A] leading-snug mb-3">
                 {member.role}
               </div>
 

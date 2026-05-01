@@ -59,11 +59,11 @@ const WhyLokoto = () => {
     <section
       ref={sectionRef}
       id="why-lokoto"
-      className="relative bg-[#F6F7F6] py-20 lg:py-32 z-[70]"
+      className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[70]"
     >
       <div className="px-6 lg:px-[7vw]">
         <div ref={headingRef} className="mb-12 lg:mb-16">
-          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray">
+          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED]">
             Pourquoi les loueurs<br />
             <span className="text-lokoto-green">choisissent Lokoto</span>
           </h2>
@@ -74,19 +74,19 @@ const WhyLokoto = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {/* ── Card 1 : 0 FCFA — stat géante, 2 colonnes ── */}
-          <div className="advantage-card md:col-span-1 lg:col-span-2 bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+          <div className="advantage-card md:col-span-1 lg:col-span-2 bg-white dark:bg-[#1C201C] rounded-[24px] border border-black/[0.05] dark:border-white/[0.07] p-8 flex flex-col justify-between min-h-[210px]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/60 mb-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/60 dark:text-[#8A928A]/60 mb-3">
                 Site autogénéré
               </p>
               <div className="text-[52px] lg:text-[68px] font-extrabold leading-none tracking-[-0.04em] text-lokoto-green">
                 1 site web
               </div>
-              <div className="text-sm font-medium text-lokoto-gray-medium mt-1">
+              <div className="text-sm font-medium text-lokoto-gray-medium dark:text-[#8A928A] mt-1">
                 inclus dans votre abonnement
               </div>
             </div>
-            <p className="text-lokoto-gray-medium text-sm leading-relaxed mt-6 max-w-md">
+            <p className="text-lokoto-gray-medium dark:text-[#8A928A] text-sm leading-relaxed mt-6 max-w-md">
               Dès votre inscription, Lokoto génère automatiquement votre site de réservation en ligne — prêt à recevoir des clients, sans développeur ni coût supplémentaire.
             </p>
           </div>
@@ -105,27 +105,27 @@ const WhyLokoto = () => {
           </div>
 
           {/* ── Card 3 : GPS J+1 ── */}
-          <div className="advantage-card bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+          <div className="advantage-card bg-white dark:bg-[#1C201C] rounded-[24px] border border-black/[0.05] dark:border-white/[0.07] p-8 flex flex-col justify-between min-h-[210px]">
             <MapPin size={24} className="text-lokoto-green" />
             <div>
-              <div className="text-[44px] font-extrabold leading-none tracking-[-0.03em] text-lokoto-gray mb-3">
+              <div className="text-[44px] font-extrabold leading-none tracking-[-0.03em] text-lokoto-gray dark:text-[#EDEFED] mb-3">
                 J+1
               </div>
-              <h3 className="text-base font-bold text-lokoto-gray mb-1.5">GPS clé en main</h3>
-              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+              <h3 className="text-base font-bold text-lokoto-gray dark:text-[#EDEFED] mb-1.5">GPS clé en main</h3>
+              <p className="text-lokoto-gray-medium dark:text-[#8A928A] text-sm leading-relaxed">
                 Boîtier fourni et installé par nos équipes. Opérationnel dès le lendemain.
               </p>
             </div>
           </div>
 
           {/* ── Card 4 : IA ── */}
-          <div className="advantage-card bg-white rounded-[24px] border border-black/[0.05] p-8 flex flex-col justify-between min-h-[210px]">
+          <div className="advantage-card bg-white dark:bg-[#1C201C] rounded-[24px] border border-black/[0.05] dark:border-white/[0.07] p-8 flex flex-col justify-between min-h-[210px]">
             <Brain size={24} className="text-lokoto-green" />
             <div>
-              <h3 className="text-lg font-bold text-lokoto-gray mb-2">
+              <h3 className="text-lg font-bold text-lokoto-gray dark:text-[#EDEFED] mb-2">
                 Intelligence prédictive
               </h3>
-              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+              <p className="text-lokoto-gray-medium dark:text-[#8A928A] text-sm leading-relaxed">
                 Anticipez les périodes de forte demande. L'algorithme apprend de vos données au fil du temps.
               </p>
             </div>
@@ -135,10 +135,10 @@ const WhyLokoto = () => {
           <div className="advantage-card md:col-span-2 lg:col-span-1 bg-lokoto-green/10 border border-lokoto-green/15 rounded-[24px] p-8 flex flex-col justify-between min-h-[210px]">
             <WifiOff size={24} className="text-lokoto-green" />
             <div>
-              <h3 className="text-lg font-bold text-lokoto-gray mb-2">
+              <h3 className="text-lg font-bold text-lokoto-gray dark:text-[#EDEFED] mb-2">
                 Fonctionne sans connexion
               </h3>
-              <p className="text-lokoto-gray-medium text-sm leading-relaxed">
+              <p className="text-lokoto-gray-medium dark:text-[#8A928A] text-sm leading-relaxed">
                 Le délestage ne stoppe pas votre activité. Vos données se synchronisent automatiquement à la reconnexion.
               </p>
             </div>

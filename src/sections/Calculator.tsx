@@ -26,10 +26,10 @@ const Slider = ({ label, hint, value, min, max, step, display, onChange }: Slide
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-baseline">
-        <span className="text-xs font-semibold uppercase tracking-wider text-lokoto-gray-medium/50">
+        <span className="text-xs font-semibold uppercase tracking-wider text-lokoto-gray-medium/50 dark:text-[#8A928A]/50">
           {label}{hint && <span className="normal-case tracking-normal ml-1">{hint}</span>}
         </span>
-        <span className="text-[22px] font-extrabold text-lokoto-gray tabular-nums leading-none">
+        <span className="text-[22px] font-extrabold text-lokoto-gray dark:text-[#EDEFED] tabular-nums leading-none">
           {display}
         </span>
       </div>
@@ -90,17 +90,17 @@ const Calculator = () => {
     <section
       ref={sectionRef}
       id="calculator"
-      className="relative bg-[#F6F7F6] py-20 lg:py-32 z-[75]"
+      className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[75]"
     >
       <div className="px-6 lg:px-[7vw]">
 
         {/* Heading */}
         <div ref={headingRef} className="mb-12 lg:mb-16">
-          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray mb-4">
+          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-4">
             Combien pourriez-vous<br />
             <span className="text-lokoto-green">gagner avec Lokoto ?</span>
           </h2>
-          <p className="text-lg text-lokoto-gray-medium max-w-xl">
+          <p className="text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-xl">
             Ajustez les paramètres de votre flotte et voyez l'impact en temps réel.
           </p>
         </div>
@@ -112,8 +112,8 @@ const Calculator = () => {
         >
 
           {/* ── Gauche : sliders ── */}
-          <div className="p-8 lg:p-10 space-y-8 bg-white border-b lg:border-b-0 lg:border-r border-black/[0.05]">
-            <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/50">
+          <div className="p-8 lg:p-10 space-y-8 bg-white dark:bg-[#1C201C] border-b lg:border-b-0 lg:border-r border-black/[0.05] dark:border-white/[0.07]">
+            <p className="text-xs font-semibold uppercase tracking-widest text-lokoto-gray-medium/50 dark:text-[#8A928A]/50">
               Votre flotte
             </p>
 

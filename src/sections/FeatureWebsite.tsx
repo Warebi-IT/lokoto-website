@@ -89,7 +89,7 @@ const FeatureWebsite = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] z-[65]"
+      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-[65]"
     >
       {/* Text block */}
       <div className="px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[7vw] md:top-[14vh] md:w-[44vw]">
@@ -103,7 +103,7 @@ const FeatureWebsite = () => {
 
         <h2
           ref={headlineRef}
-          className="text-[28px] sm:text-[38px] lg:text-[48px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray mb-6"
+          className="text-[28px] sm:text-[38px] lg:text-[48px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-6"
         >
           Votre site de location<br />
           <span className="text-lokoto-green">généré automatiquement</span>
@@ -111,14 +111,14 @@ const FeatureWebsite = () => {
 
         <p
           ref={bodyRef}
-          className="text-base lg:text-lg text-lokoto-gray-medium leading-relaxed mb-8"
+          className="text-base lg:text-lg text-lokoto-gray-medium dark:text-[#8A928A] leading-relaxed mb-8"
         >
           Lokoto crée et publie votre site vitrine en quelques secondes. Vos clients réservent et paient en ligne 24h/24 — le catalogue se synchronise en temps réel avec votre flotte disponible.
         </p>
 
         <ul ref={bulletsRef} className="space-y-3 mb-8">
           {bullets.map((bullet, index) => (
-            <li key={index} className="flex items-center gap-3 text-lokoto-gray">
+            <li key={index} className="flex items-center gap-3 text-lokoto-gray dark:text-[#EDEFED]">
               <span className="flex-shrink-0 w-5 h-5 rounded-full bg-lokoto-green/10 flex items-center justify-center">
                 <Check size={12} className="text-lokoto-green" />
               </span>
@@ -153,12 +153,12 @@ const FeatureWebsite = () => {
         style={{ boxShadow: '0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04)' }}
       >
         {/* Browser chrome */}
-        <div className="hidden md:flex items-center gap-1.5 px-4 h-9 bg-[#EBEBEB] border-b border-black/[0.08] shrink-0">
+        <div className="hidden md:flex items-center gap-1.5 px-4 h-9 bg-[#EBEBEB] dark:bg-[#252825] border-b border-black/[0.08] dark:border-white/[0.08] shrink-0">
           <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
           <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
           <span className="w-3 h-3 rounded-full bg-[#28C840]" />
           <div className="ml-3 flex-1 h-5 rounded-md bg-white/70 flex items-center justify-center">
-            <span className="text-[10px] text-lokoto-gray-medium/60 font-mono">lokoto.sn/votre-agence</span>
+            <span className="text-[10px] text-lokoto-gray-medium/60 dark:text-[#8A928A]/60 font-mono">lokoto.sn/votre-agence</span>
           </div>
         </div>
 

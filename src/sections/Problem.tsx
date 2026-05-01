@@ -45,13 +45,13 @@ const Problem = () => {
     <section
       ref={sectionRef}
       id="problem"
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] z-20"
+      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-20"
     >
       {/* Text block — order-1 on mobile (shown first), absolute on desktop */}
       <div className="order-1 px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[46vw] md:top-[22vh] md:w-[48vw]">
         <h2
           ref={headlineRef}
-          className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray mb-6"
+          className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-6"
         >
           Vous gérez votre flotte<br />
           <span className="text-lokoto-gray-medium">comme en 2005 ?</span>
@@ -59,7 +59,7 @@ const Problem = () => {
 
         <p
           ref={captionRef}
-          className="text-base lg:text-lg text-lokoto-gray-medium max-w-full md:max-w-[38vw] leading-relaxed mb-8"
+          className="text-base lg:text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-full md:max-w-[38vw] leading-relaxed mb-8"
         >
           Si vous vous reconnaissez dans ces situations, Lokoto est fait pour vous.
         </p>

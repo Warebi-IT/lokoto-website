@@ -36,6 +36,28 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  .dark {
+    --background: 120 7% 8%;
+    --foreground: 120 5% 92%;
+    --card: 120 7% 11%;
+    --card-foreground: 120 5% 92%;
+    --popover: 120 7% 11%;
+    --popover-foreground: 120 5% 92%;
+    --primary: 145 63% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 120 7% 14%;
+    --secondary-foreground: 120 5% 92%;
+    --muted: 120 7% 14%;
+    --muted-foreground: 120 3% 56%;
+    --accent: 145 63% 49%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 5% 18%;
+    --input: 120 5% 18%;
+    --ring: 145 63% 49%;
+  }
+
   * {
     @apply border-border box-border;
   }
@@ -45,7 +67,7 @@
   }
 
   body {
-    @apply bg-lokoto-gray-light text-lokoto-gray font-sans antialiased overflow-x-hidden;
+    @apply bg-lokoto-gray-light text-lokoto-gray font-sans antialiased overflow-x-hidden dark:bg-[#111413] dark:text-[#EDEFED];
   }
 
   img {
@@ -121,6 +143,22 @@
   cursor: pointer;
 }
 
+.dark .calc-slider {
+  background: linear-gradient(
+    to right,
+    #2ECC71 var(--fill, 0%),
+    rgba(255, 255, 255, 0.08) var(--fill, 0%)
+  );
+}
+
+.dark .calc-slider::-webkit-slider-thumb {
+  background: #1C201C;
+}
+
+.dark .calc-slider::-moz-range-thumb {
+  background: #1C201C;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -128,6 +166,10 @@
 
 ::-webkit-scrollbar-track {
   background: #F8F9FA;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #111413;
 }
 
 ::-webkit-scrollbar-thumb {

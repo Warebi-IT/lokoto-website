@@ -82,11 +82,11 @@ const FAQ = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#F6F7F6] py-20 lg:py-32 z-[100]"
+      className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[100]"
     >
       <div className="px-6 lg:px-[7vw]">
         <div ref={headingRef} className="text-center mb-12 lg:mb-16">
-          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray">
+          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.0] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED]">
             Vos questions,<br />
             <span className="text-lokoto-green">nos réponses</span>
           </h2>
@@ -98,12 +98,12 @@ const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-white rounded-2xl px-6 lg:px-8 border border-black/[0.06] shadow-sm data-[state=open]:shadow-card transition-shadow"
+                className="bg-white dark:bg-[#1C201C] rounded-2xl px-6 lg:px-8 border border-black/[0.06] dark:border-white/[0.07] shadow-sm data-[state=open]:shadow-card transition-shadow"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-lokoto-gray py-5 hover:no-underline data-[state=open]:text-lokoto-green transition-colors">
+                <AccordionTrigger className="text-left text-lg font-semibold text-lokoto-gray dark:text-[#EDEFED] py-5 hover:no-underline data-[state=open]:text-lokoto-green transition-colors">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-lokoto-gray-medium leading-relaxed pb-5">
+                <AccordionContent className="text-lokoto-gray-medium dark:text-[#8A928A] leading-relaxed pb-5">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

@@ -56,7 +56,7 @@ const Pricing = () => {
     <section
       ref={sectionRef}
       id="pricing"
-      className="relative bg-[#F6F7F6] py-20 lg:py-32 z-[80]"
+      className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[80]"
     >
       <div className="px-6 lg:px-[7vw]">
 
@@ -66,11 +66,11 @@ const Pricing = () => {
             <Rocket size={12} />
             Offre de lancement
           </div>
-          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray mb-4">
+          <h2 className="text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-4">
             On se lance —<br />
             <span className="text-lokoto-green">Lokoto est gratuit pour vous</span>
           </h2>
-          <p className="text-lg text-lokoto-gray-medium max-w-xl mx-auto">
+          <p className="text-lg text-lokoto-gray-medium dark:text-[#8A928A] max-w-xl mx-auto">
             Pas de carte bancaire. Pas d'engagement. Prenez Lokoto en main dès aujourd'hui
             et découvrez comment transformer la gestion de votre flotte.
           </p>
@@ -121,7 +121,7 @@ const Pricing = () => {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-sm text-lokoto-gray-medium mt-10">
+        <p className="text-center text-sm text-lokoto-gray-medium dark:text-[#8A928A] mt-10">
           Sans engagement · Accès complet · Support WhatsApp inclus
         </p>
       </div>

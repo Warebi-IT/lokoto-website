@@ -9,7 +9,7 @@ const FeatureCRM = () => {
 
   return (
     <section
-      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] z-30"
+      className="relative flex flex-col md:block w-screen min-h-screen md:h-screen md:overflow-hidden bg-[#F6F7F6] dark:bg-[#111413] z-30"
     >
       {/* Text block — first on mobile, absolute on desktop */}
       <div className="px-6 pt-20 pb-6 md:p-0 md:absolute md:left-[7vw] md:top-[16vh] md:w-[44vw]">
@@ -18,18 +18,18 @@ const FeatureCRM = () => {
           CRM
         </span>
 
-        <h2 className="text-[28px] sm:text-[38px] lg:text-[48px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray mb-6">
+        <h2 className="text-[28px] sm:text-[38px] lg:text-[48px] font-extrabold leading-[1.05] tracking-[-0.02em] text-lokoto-gray dark:text-[#EDEFED] mb-6">
           Fichier client<br />
           <span className="text-lokoto-green">intelligent</span>
         </h2>
 
-        <p className="text-base lg:text-lg text-lokoto-gray-medium leading-relaxed mb-8">
+        <p className="text-base lg:text-lg text-lokoto-gray-medium dark:text-[#8A928A] leading-relaxed mb-8">
           Centralisez pièces, permis, historique et scoring. Retrouvez n'importe quelle info en 2 secondes.
         </p>
 
         <ul className="space-y-3">
           {bullets.map((bullet, index) => (
-            <li key={index} className="flex items-center gap-3 text-lokoto-gray">
+            <li key={index} className="flex items-center gap-3 text-lokoto-gray dark:text-[#EDEFED]">
               <span className="flex-shrink-0 w-5 h-5 rounded-full bg-lokoto-green/10 flex items-center justify-center">
                 <Check size={12} className="text-lokoto-green" />
               </span>
@@ -45,7 +45,7 @@ const FeatureCRM = () => {
         <img
           src="/crm.png"
           alt="CRM Lokoto — Fichier client"
-          className="w-full h-full object-contain bg-[#F6F7F6]"
+          className="w-full h-full object-contain bg-[#F6F7F6] dark:bg-[#111413]"
         />
       </div>
     </section>
