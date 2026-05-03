@@ -1,0 +1,125 @@
+LOKOTO — ANALYSE PRODUIT POUR STRATÉGIE DE VENTE
+=================================================
+Date : 29 avril 2026
+
+
+CE QUE C'EST
+------------
+SaaS de gestion de flotte de véhicules de location, conçu spécifiquement pour le marché
+sénégalais. Tout-en-un : CRM clients, GPS tracking, comptabilité, et site de réservation
+en ligne.
+
+
+FORCES
+------
+
+1. Positionnement marché unique
+   - "Conçu au Sénégal, pour le Sénégal" — interface française, mobile-first, adapté aux
+     réalités locales
+   - Pas de concurrent local identifié — les solutions internationales (Fleet Complete,
+     etc.) sont inadaptées et trop chères
+   - Cible sous-digitalisée : les loueurs gèrent encore tout sur WhatsApp/Excel → terrain
+     vierge mais éducation du marché à faire
+
+2. GPS clé en main (différenciateur fort)
+   - Boîtier fourni + installé par les équipes Lokoto
+   - J+1 : opérationnel dès le lendemain
+   - Gratuit pour les 50 premiers inscrits → levier FOMO puissant
+   - Concurrents GPS (Trackimo, Teltonika…) vendent du hardware seul, sans logiciel
+
+3. Modèle tarifaire sans friction
+   - 0 FCFA pendant le lancement — pas de carte bancaire, pas d'engagement
+   - Modèle à commission : pas de coût fixe → aligné sur le succès du client
+   - 30 premiers jours gratuits même post-lancement
+   - Support WhatsApp inclus (canal naturel au Sénégal)
+
+4. Fonctionne hors ligne
+   - Le délestage / coupures réseau ne bloquent pas l'activité
+   - Synchronisation automatique à la reconnexion
+   - Argument décisif dans le contexte sénégalais
+
+5. Tout-en-un = une seule facture, un seul outil
+   - CRM (fiches conducteurs, scoring fiabilité, historique)
+   - GPS temps réel + géofencing + suivi kilométrique
+   - Comptabilité par véhicule (prévu)
+   - Site de réservation auto-généré (prévu)
+   - Calculateur de gains intégré → vente directe de ROI
+
+
+FAIBLESSES / RISQUES
+--------------------
+
+1. Produit incomplet au lancement (risque majeur)
+
+   Fonctionnalité              | Statut
+   ----------------------------|-------------------
+   CRM + contrats              | Disponible
+   GPS tracking                | Disponible
+   Analytics / prévisions      | Bientôt disponible
+   Comptabilité                | Bientôt disponible
+   Site de réservation en ligne| Bientôt disponible
+
+   → On vend un tout-en-un, mais 3 modules sur 5 sont absents. Si un prospect s'inscrit
+     pour la compta ou le site web, il sera déçu.
+
+2. Commission opaque
+   - La FAQ dit "un petit pourcentage" mais ne chiffre jamais le taux
+   - Point de blocage n°1 en vente B2B : le prospect veut savoir combien ça lui coûte
+     réellement avant de signer
+   - Exemple : un loueur avec 20 véhicules à 35 000 FCFA/jour voit passer ~21M FCFA/mois
+     → même 1% = 210 000 FCFA/mois, c'est significatif
+
+3. Zéro social proof pour l'instant
+   - Pas de témoignages clients réels
+   - Pas de cas d'usage chiffrés issus de vrais clients
+   - Pas de logos d'entreprises clientes
+
+4. Startup inconnue — crédibilité à construire
+   - Qui est derrière Lokoto ? La section Team existe mais peu visible côté marketing
+   - Les décideurs (patrons de PME) ont besoin de confiance avant de confier leur flotte
+
+5. Logistique d'installation GPS = goulot d'étranglement
+   - L'installation physique par un technicien est un avantage mais une contrainte
+     opérationnelle : ne scale pas facilement au-delà de Dakar
+
+6. Incertitude post-lancement
+   - Pas de pricing annoncé après la période de lancement
+   - Les premiers clients ne savent pas ce qu'ils paieront dans 6 mois → peut freiner
+     l'adoption
+
+
+AXES STRATÉGIQUES POUR LA VENTE
+---------------------------------
+
+Priorité 1 — Cible initiale
+   PME de 5 à 30 véhicules, basées à Dakar, sans logiciel de gestion actuel. Elles ont la
+   douleur la plus forte et la moins de résistance au changement.
+
+Priorité 2 — Argument d'entrée
+   Ne pas vendre le tout-en-un d'abord. Vendre le GPS clé en main (seul module complet +
+   différenciant immédiat) comme cheval de Troie. Le CRM suit naturellement.
+
+Priorité 3 — Lever le blocage commission
+   Chiffrer clairement le taux dans le discours commercial, même si non affiché sur le
+   site. "Sur 35 000 FCFA de location, vous nous donnez X FCFA" — la transparence crée la
+   confiance.
+
+Priorité 4 — Urgence réelle
+   "GPS gratuit pour les 50 premiers" est un mécanisme solide — mais il faut le rendre
+   visible et crédible (compteur en temps réel ? liste d'inscrits ?).
+
+Priorité 5 — Social proof rapide
+   Convertir les 10 premiers clients en cas d'usage concrets avec chiffres réels dès que
+   possible. C'est le seul moyen de débloquer la vague suivante.
+
+
+RÉSUMÉ EXÉCUTIF
+---------------
+Lokoto a une proposition de valeur forte et un positionnement différencié sur un marché
+encore vierge. Le risque principal pour la vente est la crédibilité (startup inconnue +
+produit incomplet) et l'opacité du pricing.
+
+La stratégie la plus efficace à court terme :
+  → Vendre le GPS comme porte d'entrée
+  → Limiter les promesses sur les modules "bientôt disponibles"
+  → Transformer les 50 premiers inscrits en ambassadeurs actifs

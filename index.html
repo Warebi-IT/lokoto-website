@@ -1,9 +1,158 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lokoto - Gestion de Flotte</title>
+
+    <!-- SEO Core -->
+    <title>Lokoto — Logiciel de Gestion de Flotte au Sénégal | Location de Véhicules</title>
+    <meta name="description" content="Lokoto est la plateforme SaaS tout-en-un de gestion de flotte pour les entreprises de location de véhicules au Sénégal. CRM clients, GPS temps réel, comptabilité, site de réservation en ligne. Inscription gratuite." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Lokoto" />
+    <meta name="keywords" content="gestion de flotte Sénégal, logiciel location voiture Sénégal, SaaS flotte automobile Dakar, CRM location véhicules, GPS tracking flotte, gestion parc auto Sénégal" />
+    <link rel="canonical" href="https://lokoto.sn/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lokoto.sn/" />
+    <meta property="og:title" content="Lokoto — Logiciel de Gestion de Flotte au Sénégal" />
+    <meta property="og:description" content="La plateforme SaaS tout-en-un pour gérer votre flotte de location au Sénégal. CRM, GPS temps réel, comptabilité, site de réservation. Gratuit pendant le lancement." />
+    <meta property="og:image" content="https://lokoto.sn/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lokoto — Tableau de bord de gestion de flotte" />
+    <meta property="og:locale" content="fr_SN" />
+    <meta property="og:site_name" content="Lokoto" />
+
+<!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Structured Data — Organisation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lokoto",
+      "url": "https://lokoto.sn",
+      "logo": "https://lokoto.sn/favicon.svg",
+      "description": "Plateforme SaaS de gestion de flotte pour les entreprises de location de véhicules au Sénégal.",
+      "foundingDate": "2026",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Sénégal"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": ["French", "Wolof"],
+        "url": "https://lokoto.sn/#contact"
+      }
+    }
+    </script>
+
+    <!-- Structured Data — SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Lokoto",
+      "url": "https://lokoto.sn",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, Android, iOS",
+      "description": "Logiciel SaaS de gestion de flotte tout-en-un pour les entreprises de location de véhicules au Sénégal. Inclut CRM, suivi GPS temps réel, comptabilité et site de réservation en ligne.",
+      "featureList": [
+        "CRM et fichier clients",
+        "Gestion des contrats de location",
+        "Suivi GPS temps réel",
+        "Analytics et rapports financiers",
+        "Comptabilité intégrée",
+        "Site de réservation en ligne",
+        "Application mobile",
+        "Mode hors-ligne"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "XOF",
+        "description": "Gratuit pendant la phase de lancement. Modèle à la commission ensuite."
+      },
+      "inLanguage": "fr",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lokoto"
+      }
+    }
+    </script>
+
+    <!-- Structured Data — FAQPage (rich results Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quel est le tarif après le lancement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pendant la phase de lancement, Lokoto est entièrement gratuit. Après le lancement officiel, le modèle sera à la commission : un petit pourcentage uniquement sur les locations enregistrées dans Lokoto. Pas de location = pas de frais."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment est installé le boîtier GPS ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notre technicien se déplace pour installer le boîtier sur chacun de vos véhicules. L'installation prend moins de 30 minutes par véhicule et est entièrement gratuite pour les 50 premiers inscrits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lokoto fonctionne-t-il sans connexion internet stable ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Lokoto est conçu pour les réalités du Sénégal : si vous perdez la connexion, l'application continue de fonctionner en mode hors-ligne. Toutes vos données se synchronisent automatiquement dès que la connexion est rétablie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je importer mes données existantes (Excel, WhatsApp) ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Notre équipe vous accompagne pour importer vos fichiers clients et véhicules existants. Que vous ayez des tableurs Excel ou des listes WhatsApp, on s'occupe de la migration pour vous — sans perte de données."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lokoto fonctionne-t-il sur téléphone ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Lokoto est 100% accessible depuis votre smartphone. Pas besoin d'ordinateur. L'interface est pensée mobile-first pour vous permettre de gérer votre flotte où que vous soyez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mes données sont-elles sécurisées ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, vos données sont hébergées sur des serveurs sécurisés en Europe et ne sont jamais partagées avec des tiers. Vous êtes propriétaire de vos données et pouvez les exporter à tout moment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Y a-t-il un engagement de durée ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Lokoto n'a aucun engagement de durée. Vous pouvez arrêter quand vous voulez, sans frais de résiliation. Pendant la phase de lancement, c'est entièrement gratuit."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Dark mode (FOUC prevention) -->
     <script>
       (function() {
         var stored = localStorage.getItem('theme');

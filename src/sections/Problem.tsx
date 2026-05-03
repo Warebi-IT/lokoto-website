@@ -94,7 +94,7 @@ const Problem = () => {
       >
         <img
           src="/problem_car.jpg"
-          alt="Modern car detail"
+          alt="Gestion de flotte manuelle et chronophage — le problème que Lokoto résout"
           className="w-full h-full object-cover"
         />
       </div>
