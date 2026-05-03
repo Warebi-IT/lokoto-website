@@ -96,7 +96,7 @@ const FeatureAnalytics = () => {
       >
         <img
           src="/feature_office.jpg"
-          alt="Professional in office"
+          alt="Analyse des performances de flotte — tableau de bord analytics Lokoto"
           className="w-full h-full object-cover"
         />
       </div>

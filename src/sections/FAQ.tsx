@@ -94,6 +94,7 @@ const FAQ = () => {
   return (
     <section
       ref={sectionRef}
+      id="faq"
       className="relative bg-[#F6F7F6] dark:bg-[#111413] py-20 lg:py-32 z-[100]"
     >
       <div className="px-6 lg:px-[7vw]">

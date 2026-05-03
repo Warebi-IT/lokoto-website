@@ -158,7 +158,7 @@ const Hero = () => {
         >
           <img
             src="/dashboard.png"
-            alt="Lokoto Dashboard"
+            alt="Tableau de bord Lokoto — gestion de flotte et suivi GPS en temps réel"
             className="w-full block"
             loading="eager"
           />

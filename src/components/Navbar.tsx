@@ -31,6 +31,7 @@ const Navbar = () => {
       {/* ── Floating pill nav ── */}
       <div className="fixed top-5 left-0 right-0 z-[200] flex justify-center px-4 pointer-events-none">
         <nav
+          aria-label="Navigation principale"
           className={cn(
             'flex items-center gap-1 px-2 py-2 rounded-full border pointer-events-auto transition-all duration-500',
             isScrolled
